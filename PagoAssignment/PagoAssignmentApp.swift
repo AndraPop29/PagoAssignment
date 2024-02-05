@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct PagoAssignmentApp: App {
+
     var body: some Scene {
         WindowGroup {
-            let repository = UsersRepositoryImplementation()
-            ContactsList(viewModel: ContactsListViewModel(repository: repository))
+            let repository = UsersAPIRepositoryImplementation()
+            let store = UsersStoreImplementation()
+            ContactsList(viewModel: ContactsListViewModel(repository: repository, localStore: store))
         }
     }
 }

@@ -11,7 +11,7 @@ protocol UsersRepository {
     func getUsers() async throws -> [User]
 }
 
-class UsersRepositoryImplementation: UsersRepository {
+class UsersAPIRepositoryImplementation: UsersRepository {
 
     func getUsers() async throws -> [User] {
         guard let url = URL(string: Strings.usersURL) else {

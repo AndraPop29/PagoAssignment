@@ -40,4 +40,8 @@ struct UserMapper {
     static func map(_ from: DTO) -> Model {
         User(id: from.id, name: from.name, email: from.email, gender: from.gender, status: User.Status(rawValue: from.status) ?? .inactive)
     }
+
+    static func dto(_ from: Model) -> DTO {
+        UserDTO(id: from.id, name: from.name, email: from.email, gender: from.gender, status: from.status.rawValue)
+    }
 }

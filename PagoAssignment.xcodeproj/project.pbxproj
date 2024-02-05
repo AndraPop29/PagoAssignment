@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		603A286B2B70FCF300C66311 /* UsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603A286A2B70FCF300C66311 /* UsersStore.swift */; };
+		603A286D2B712F9500C66311 /* MockUsersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603A286C2B712F9500C66311 /* MockUsersStore.swift */; };
 		60882B132B6FA07200F2B6F9 /* PagoAssignmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60882B122B6FA07200F2B6F9 /* PagoAssignmentApp.swift */; };
 		60882B172B6FA07300F2B6F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60882B162B6FA07300F2B6F9 /* Assets.xcassets */; };
 		60882B1A2B6FA07300F2B6F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60882B192B6FA07300F2B6F9 /* Preview Assets.xcassets */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		603A286A2B70FCF300C66311 /* UsersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStore.swift; sourceTree = "<group>"; };
+		603A286C2B712F9500C66311 /* MockUsersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUsersStore.swift; sourceTree = "<group>"; };
 		60882B0F2B6FA07200F2B6F9 /* PagoAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagoAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60882B122B6FA07200F2B6F9 /* PagoAssignmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoAssignmentApp.swift; sourceTree = "<group>"; };
 		60882B162B6FA07300F2B6F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,7 +146,7 @@
 		60882B422B6FA33600F2B6F9 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				C067AD0C2B70C9FF00EB3526 /* Networking */,
+				C067AD0C2B70C9FF00EB3526 /* Data */,
 				60882B412B6FA32100F2B6F9 /* Util */,
 				60882B402B6FA31800F2B6F9 /* Model */,
 				C067AD0D2B70CA1C00EB3526 /* View */,
@@ -158,13 +162,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		C067AD0C2B70C9FF00EB3526 /* Networking */ = {
+		C067AD0C2B70C9FF00EB3526 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				60882B4B2B6FDEED00F2B6F9 /* UserDTO.swift */,
 				60882B452B6FAB5200F2B6F9 /* UsersRepository.swift */,
+				603A286A2B70FCF300C66311 /* UsersStore.swift */,
 			);
-			path = Networking;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		C067AD0D2B70CA1C00EB3526 /* View */ = {
@@ -182,6 +187,7 @@
 			children = (
 				60882B522B6FF20300F2B6F9 /* MockContactsListData.swift */,
 				60882B542B6FF59300F2B6F9 /* MockUsersRepository.swift */,
+				603A286C2B712F9500C66311 /* MockUsersStore.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 			files = (
 				60882B442B6FA39A00F2B6F9 /* ContactsList.swift in Sources */,
 				60882B482B6FB81A00F2B6F9 /* ContactsListViewModel.swift in Sources */,
+				603A286B2B70FCF300C66311 /* UsersStore.swift in Sources */,
 				60882B132B6FA07200F2B6F9 /* PagoAssignmentApp.swift in Sources */,
 				60882B3F2B6FA27D00F2B6F9 /* Strings.swift in Sources */,
 				60882B462B6FAB5200F2B6F9 /* UsersRepository.swift in Sources */,
@@ -303,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				603A286D2B712F9500C66311 /* MockUsersStore.swift in Sources */,
 				60882B532B6FF20300F2B6F9 /* MockContactsListData.swift in Sources */,
 				60882B242B6FA07300F2B6F9 /* UserTests.swift in Sources */,
 				60882B572B6FF64800F2B6F9 /* ContactsListViewModelTests.swift in Sources */,

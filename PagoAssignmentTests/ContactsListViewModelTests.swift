@@ -15,8 +15,9 @@ class ContactsListViewModelTests: XCTestCase {
         let users = userDTOs.compactMap { UserMapper.map($0) }
         let repository = MockUsersRepository()
         repository.users = users
-        let contactsListViewModel = ContactsListViewModel(repository: repository)
-        await contactsListViewModel.filterUsers(users)
+        let store = MockUsersStore()
+        let contactsListViewModel = ContactsListViewModel(repository: repository, localStore: store)
+        try await contactsListViewModel.filterUsers(users)
         XCTAssertEqual(contactsListViewModel.users.count, 2)
     }
 }

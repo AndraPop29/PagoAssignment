@@ -11,29 +11,47 @@ final class ContactsListViewModel: ObservableObject {
 
     @Published
     var users: [User] = []
-
-    let repository: UsersRepository
     var sectionHeader: String = Strings.contactsListHeader.uppercased()
 
-    init(repository: UsersRepository) {
+    private let localStore: UsersStore
+    private let repository: UsersRepository
+
+    init(repository: UsersRepository, localStore: UsersStore) {
         self.repository = repository
-        fetchUsers()
+        self.localStore = localStore
     }
 
-
-    func fetchUsers() {
+    func loadContacts() {
         Task {
             do {
-                let fetchedUsers = try await repository.getUsers()
-                await filterUsers(fetchedUsers)
+                let users = try await localStore.load()
+                if users.isEmpty {
+                    fetchUsers()
+                }
+                await MainActor.run {
+                    self.users = users
+                }
             } catch (let error) {
                 print(error)
             }
         }
     }
 
-    func filterUsers(_ users: [User]) async {
+    func fetchUsers() {
+        Task {
+            do {
+                let fetchedUsers = try await repository.getUsers()
+                try await filterUsers(fetchedUsers)
+            } catch (let error) {
+                print(error)
+            }
+        }
+    }
+
+    func filterUsers(_ users: [User]) async throws {
         let filteredUsers = users.filter { $0.status == User.Status.active }
+        try await localStore.save(users: filteredUsers)
+
         await MainActor.run {
             self.users = filteredUsers
         }

@@ -13,4 +13,5 @@ struct Strings {
 
     // URLs
     static let usersURL = "https://gorest.co.in/public/v2/users"
+    static let placeholderImgUrl = "https://picsum.photos/200/200"
 }

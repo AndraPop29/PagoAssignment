@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct ContactsList: View {
-    
+
     @ObservedObject
     var viewModel: ContactsListViewModel
-
-    init(viewModel: ContactsListViewModel) {
-        self.viewModel = viewModel
-    }
 
     var body: some View {
         NavigationView {
@@ -34,6 +30,9 @@ struct ContactsList: View {
             .navigationBarBackground()
             .listStyle(GroupedListStyle())
             .navigationTitle(Strings.contactsListTitle)
+        }
+        .onAppear {
+            viewModel.loadContacts()
         }
     }
 }

@@ -33,7 +33,7 @@ struct ContactRow: View {
                 .background(Color.gray.opacity(0.8))
                 .foregroundColor(.white)
         } else {
-            AsyncImage(url: URL(string: "https://picsum.photos/200/200"))
+            AsyncImage(url: URL(string: Strings.placeholderImgUrl))
                 .frame(width: 50, height: 50)
         }
     }
