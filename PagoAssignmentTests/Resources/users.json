@@ -1,0 +1,24 @@
+[
+    {
+        "id": 12345,
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "gender": "male",
+        "status": "inactive"
+    },
+    {
+        "id": 12345,
+        "name": "Ana Popescu",
+        "email": "ana@gmail.com",
+        "gender": "female",
+        "status": "active"
+    },
+    {
+        "id": 12345,
+        "name": "Maria Pop",
+        "email": "maria@gmail.com",
+        "gender": "male",
+        "status": "active"
+    }
+]
+
