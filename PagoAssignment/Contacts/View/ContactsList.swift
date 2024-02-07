@@ -32,7 +32,7 @@ struct ContactsList: View {
             .navigationTitle(Strings.contactsListTitle)
         }
         .onAppear {
-            viewModel.loadContacts()
+            viewModel.fetchUsers()
         }
     }
 }

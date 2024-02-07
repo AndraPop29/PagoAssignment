@@ -12,9 +12,11 @@ struct PagoAssignmentApp: App {
 
     var body: some Scene {
         WindowGroup {
-            let repository = UsersAPIRepositoryImplementation()
-            let store = UsersStoreImplementation()
-            ContactsList(viewModel: ContactsListViewModel(repository: repository, localStore: store))
+            let localDataSource = UsersLocalDataSource()
+            let remoteDataSource = UsersRemoteDataSource()
+            let repository = UsersRepositoryImplementation(remoteDataSource: remoteDataSource,
+                                                           localDataSource: localDataSource)
+            ContactsList(viewModel: ContactsListViewModel(repository: repository))
         }
     }
 }

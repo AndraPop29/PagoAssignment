@@ -13,28 +13,10 @@ final class ContactsListViewModel: ObservableObject {
     var users: [User] = []
     var sectionHeader: String = Strings.contactsListHeader.uppercased()
 
-    private let localStore: UsersStore
     private let repository: UsersRepository
 
-    init(repository: UsersRepository, localStore: UsersStore) {
+    init(repository: UsersRepository) {
         self.repository = repository
-        self.localStore = localStore
-    }
-
-    func loadContacts() {
-        Task {
-            do {
-                let users = try await localStore.load()
-                if users.isEmpty {
-                    fetchUsers()
-                }
-                await MainActor.run {
-                    self.users = users
-                }
-            } catch (let error) {
-                print(error)
-            }
-        }
     }
 
     func fetchUsers() {
@@ -50,7 +32,6 @@ final class ContactsListViewModel: ObservableObject {
 
     func filterUsers(_ users: [User]) async throws {
         let filteredUsers = users.filter { $0.status == User.Status.active }
-        try await localStore.save(users: filteredUsers)
 
         await MainActor.run {
             self.users = filteredUsers

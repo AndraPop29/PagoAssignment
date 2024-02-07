@@ -1,5 +1,5 @@
 //
-//  UsersStore.swift
+//  UsersLocalDataSource.swift
 //  PagoAssignment
 //
 //  Created by Pop, Andra on 05.02.2024.
@@ -7,12 +7,7 @@
 
 import SwiftUI
 
-protocol UsersStore {
-    func load() async throws -> [User]
-    func save(users: [User]) async throws
-}
-
-class UsersStoreImplementation: UsersStore {
+class UsersLocalDataSource: UsersDataSource {
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,

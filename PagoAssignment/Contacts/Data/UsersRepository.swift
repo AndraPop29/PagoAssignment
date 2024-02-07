@@ -11,17 +11,29 @@ protocol UsersRepository {
     func getUsers() async throws -> [User]
 }
 
-class UsersAPIRepositoryImplementation: UsersRepository {
+class UsersRepositoryImplementation: UsersRepository {
+
+    private let remoteDataSource: UsersDataSource
+    private let localDataSource: UsersDataSource
+
+    init(remoteDataSource: UsersDataSource, localDataSource: UsersDataSource) {
+        self.remoteDataSource = remoteDataSource
+        self.localDataSource = localDataSource
+    }
 
     func getUsers() async throws -> [User] {
-        guard let url = URL(string: Strings.usersURL) else {
+        do {
+            let localUsers = try await localDataSource.load()
+            if localUsers.isEmpty {
+                let remoteUsers = try await remoteDataSource.load()
+                try await localDataSource.save(users: localUsers)
+                return remoteUsers
+            } else {
+                return localUsers
+            }
+        } catch (let error) {
+            print(error)
             return []
         }
-
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let userDTOs = try JSONDecoder().decode([UserDTO].self, from: data)
-        let users = userDTOs.compactMap { UserMapper.map($0) }
-
-        return users
     }
 }
