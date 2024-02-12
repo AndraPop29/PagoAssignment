@@ -25,7 +25,7 @@ struct ContactRow: View {
     }
 
     @ViewBuilder private var leftLogo: some View {
-        if !user.initials.isEmpty {
+        if (user.id ?? 0) % 2 == 0 {
             Text(user.initials)
                 .fontWeight(.bold)
                 .frame(width: 50, height: 50)

@@ -30,6 +30,11 @@ struct ContactsList: View {
             .navigationBarBackground()
             .listStyle(GroupedListStyle())
             .navigationTitle(Strings.contactsListTitle)
+            .toolbar {
+                NavigationLink(destination: AddContact()) {
+                    Image(systemName: "chevron.right")
+                }
+            }
         }
         .onAppear {
             viewModel.fetchUsers()
